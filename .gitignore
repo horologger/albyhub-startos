@@ -1,0 +1,11 @@
+.DS_Store
+.env
+*.db
+*.macaroon
+node_modules
+nostr-wallet-connect
+nwc.db
+docker-images/
+*.s9pk
+scripts/*.js
+lnd-data/

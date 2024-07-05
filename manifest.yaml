@@ -1,0 +1,106 @@
+id: albyhub
+title: Alby Hub
+version: 0.6.2
+release-notes: Alby Hub initial release
+license: Apache-2.0
+wrapper-repo: "https://github.com/horologger/nostr-wallet-connect-startos"
+upstream-repo: "https://github.com/getAlby/nostr-wallet-connect-next"
+support-site: "https://github.com/getAlby/nostr-wallet-connect-next/issues"
+marketing-site: "https://getalby.com/"
+build: ["make"]
+description:
+  short: Alby Hub for Start9
+  long: |
+    Connect your Start9 to the world of Bitcoin apps.
+assets:
+  license: LICENSE
+  icon: nwc-logo.png
+  instructions: instructions.md
+main:
+  type: docker
+  image: main
+  entrypoint: "docker_entrypoint.sh"
+  args: []
+  mounts:
+    main: /data
+    lnd: /mnt/lnd
+health-checks:
+  web-ui:
+    name: Web UI
+    success-message: Alby Hub is ready
+    type: script
+config:
+  get:
+    type: script
+  set:
+    type: script
+properties: ~
+environment: ~
+volumes:
+  main:
+    type: data
+  lnd:
+    type: pointer
+    package-id: lnd
+    volume-id: main
+    path: /public
+    readonly: true
+interfaces:
+  main:
+    name: User Interface
+    description: Create connections with Nostr Wallet Connect
+    tor-config:
+      port-mapping:
+        80: "8080"
+    lan-config:
+      443:
+        ssl: true
+        internal: 8080
+    ui: true
+    protocols:
+      - tcp
+      - http
+dependencies:
+  lnd:
+    version: ">=0.16.0 <0.19.0"
+    description: Nostr Wallet Connect works with your LND
+    requirement:
+      type: "required"
+      how: Use the LND instance by default
+    config: ~
+backup:
+  create:
+    type: docker
+    image: compat
+    system: true
+    entrypoint: compat
+    args:
+      - duplicity
+      - create
+      - /mnt/backup
+      - /root/data
+    mounts:
+      BACKUP: "/mnt/backup"
+      main: "/root/data"
+  restore:
+    type: docker
+    image: compat
+    system: true
+    entrypoint: compat
+    args:
+      - duplicity
+      - restore
+      - /mnt/backup
+      - /root/data
+    mounts:
+      BACKUP: "/mnt/backup"
+      main: "/root/data"
+migrations:
+  from:
+    "*":
+      type: script
+      args: ["from"]
+  to:
+    "*":
+      type: script
+      args: ["to"]
