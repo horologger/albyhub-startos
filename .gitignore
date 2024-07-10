@@ -3,7 +3,10 @@
 *.db
 *.macaroon
 node_modules
+<<<<<<< Updated upstream
 nostr-wallet-connect
+=======
+>>>>>>> Stashed changes
 albyhub
 nwc.db
 docker-images/

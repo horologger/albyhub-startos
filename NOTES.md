@@ -53,7 +53,11 @@ docker run \
 -v data:/data \
 -p 21284:21284 \
 --name timeintocrypto \
+<<<<<<< Updated upstream
 -it horologger/albyhub:v0.4.2
+=======
+-it horologger/albyhub:v0.4.2 
+>>>>>>> Stashed changes
 ```
 
 On Ragnar
@@ -69,13 +73,21 @@ docker run \
 -e LND_ADDRESS=$APP_LIGHTNING_NODE_IP:$APP_LIGHTNING_NODE_GRPC_PORT \
 -e LND_CERT_FILE="/lnd/tls.cert" \
 -e LND_MACAROON_FILE="/lnd/data/chain/bitcoin/$APP_BITCOIN_NETWORK/admin.macaroon" \
+<<<<<<< Updated upstream
 -e WORK_DIR="/data/albyhub" \
+=======
+-e DATABASE_URI="/data/albyhub.db" \
+>>>>>>> Stashed changes
 -e COOKIE_SECRET="666" \
 -v /home/alunde/albyhub/data:/data \
 -v /t4/lnd:/lnd:ro \
 -p 8080:8080 \
 --name nwc \
+<<<<<<< Updated upstream
 -it horologger/albyhub:v0.4.2
+=======
+-it horologger/albyhub:v0.4.2 
+>>>>>>> Stashed changes
 ```
 Subsequent runs
 ```sh
@@ -84,26 +96,42 @@ docker run \
 -e LND_ADDRESS=ragnar:10009 \
 -e LND_CERT_FILE="/lnd/tls.cert" \
 -e LND_MACAROON_FILE="/lnd/data/chain/bitcoin/bitcoin/admin.macaroon" \
+<<<<<<< Updated upstream
 -e WORK_DIR="/data/albyhub" \
+=======
+-e DATABASE_URI="/data/albyhub.db" \
+>>>>>>> Stashed changes
 -e COOKIE_SECRET="666" \
 -v /data:/data \
 -v /lnd-data:/lnd:ro \
 -p 8080:8080 \
 --name nwc \
+<<<<<<< Updated upstream
 -it horologger/albyhub:v0.4.2
+=======
+-it horologger/albyhub:v0.4.2 
+>>>>>>> Stashed changes
 
 docker run \
 -e LN_BACKEND_TYPE="LND" \
 -e LND_ADDRESS=ragnar:10009 \
 -e LND_CERT_FILE="/lnd/tls.cert" \
 -e LND_MACAROON_FILE="/lnd/data/chain/bitcoin/mainnet/admin.macaroon" \
+<<<<<<< Updated upstream
 -e WORK_DIR="/data/albyhub" \
+=======
+-e DATABASE_URI="/data/albyhub.db" \
+>>>>>>> Stashed changes
 -e COOKIE_SECRET="666" \
 -v data:/data \
 -v lnd-data:/lnd:ro \
 -p 8080:8080 \
 --name nwc \
+<<<<<<< Updated upstream
 -it horologger/albyhub:v0.4.2
+=======
+-it horologger/albyhub:v0.4.2 
+>>>>>>> Stashed changes
 
 ```
 Inspect
