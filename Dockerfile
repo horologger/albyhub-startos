@@ -1,4 +1,4 @@
-FROM ghcr.io/getalby/nostr-wallet-connect-next:latest
+FROM ghcr.io/getalby/hub:latest
 LABEL maintainer="andrewlunde <andrew.lunde@sap.com>"
 
 # Start9 Packaging

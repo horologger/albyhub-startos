@@ -22,8 +22,8 @@ Prior to building the `albyhub` package, it's essential to configure your build 
 Clone the **Alby Hub** package repository locally.
 
 ```
-git clone https://github.com/horologger/nostr-wallet-connect-startos.git
-cd nostr-wallet-connect-startos
+git clone https://github.com/horologger/albyhub-startos.git
+cd albyhub-startos
 ```
 
 ## Building

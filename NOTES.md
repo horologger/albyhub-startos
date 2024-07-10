@@ -6,13 +6,13 @@ docker buildx create --use
 ```
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 --tag horologger/nostr-wallet-connect:v0.4.2 --output "type=registry" .
+docker buildx build --platform linux/arm64,linux/amd64 --tag horologger/albyhub:v0.4.2 --output "type=registry" .
 
 
-docker buildx build --platform linux/arm64 --tag horologger/nostr-wallet-connect:v0.4.2 --load .
-docker buildx build --platform linux/amd64 --tag horologger/nostr-wallet-connect:v0.4.2 --load .
+docker buildx build --platform linux/arm64 --tag horologger/albyhub:v0.4.2 --load .
+docker buildx build --platform linux/amd64 --tag horologger/albyhub:v0.4.2 --load .
 
-docker buildx build --platform linux/arm64 --tag horologger/nostr-wallet-connect-startos:v0.4.2 --load .
+docker buildx build --platform linux/arm64 --tag horologger/albyhub-startos:v0.4.2 --load .
 
 ```
 
@@ -43,7 +43,7 @@ sudo ./umbrel/scripts/app restart isviable-timeintocrypto
 On Zilla
 ```sh
 su - alunde
-docker pull horologger/nostr-wallet-connect:v0.4.2
+docker pull horologger/albyhub:v0.4.2
 mkdir -p ~/.timeintocrypto/data
 ```
 First run
@@ -53,13 +53,13 @@ docker run \
 -v data:/data \
 -p 21284:21284 \
 --name timeintocrypto \
--it horologger/nostr-wallet-connect:v0.4.2 
+-it horologger/albyhub:v0.4.2
 ```
 
 On Ragnar
 ```sh
 su - alunde
-docker pull horologger/nostr-wallet-connect:v0.4.2
+docker pull horologger/albyhub:v0.4.2
 mkdir -p ~/.timeintocrypto/data
 ```
 First run
@@ -69,13 +69,13 @@ docker run \
 -e LND_ADDRESS=$APP_LIGHTNING_NODE_IP:$APP_LIGHTNING_NODE_GRPC_PORT \
 -e LND_CERT_FILE="/lnd/tls.cert" \
 -e LND_MACAROON_FILE="/lnd/data/chain/bitcoin/$APP_BITCOIN_NETWORK/admin.macaroon" \
--e DATABASE_URI="/data/nostr-wallet-connect.db" \
+-e WORK_DIR="/data/albyhub" \
 -e COOKIE_SECRET="666" \
--v /home/alunde/nostr-wallet-connect/data:/data \
+-v /home/alunde/albyhub/data:/data \
 -v /t4/lnd:/lnd:ro \
 -p 8080:8080 \
 --name nwc \
--it horologger/nostr-wallet-connect:v0.4.2 
+-it horologger/albyhub:v0.4.2
 ```
 Subsequent runs
 ```sh
@@ -84,26 +84,26 @@ docker run \
 -e LND_ADDRESS=ragnar:10009 \
 -e LND_CERT_FILE="/lnd/tls.cert" \
 -e LND_MACAROON_FILE="/lnd/data/chain/bitcoin/bitcoin/admin.macaroon" \
--e DATABASE_URI="/data/nostr-wallet-connect.db" \
+-e WORK_DIR="/data/albyhub" \
 -e COOKIE_SECRET="666" \
 -v /data:/data \
 -v /lnd-data:/lnd:ro \
 -p 8080:8080 \
 --name nwc \
--it horologger/nostr-wallet-connect:v0.4.2 
+-it horologger/albyhub:v0.4.2
 
 docker run \
 -e LN_BACKEND_TYPE="LND" \
 -e LND_ADDRESS=ragnar:10009 \
 -e LND_CERT_FILE="/lnd/tls.cert" \
 -e LND_MACAROON_FILE="/lnd/data/chain/bitcoin/mainnet/admin.macaroon" \
--e DATABASE_URI="/data/nostr-wallet-connect.db" \
+-e WORK_DIR="/data/albyhub" \
 -e COOKIE_SECRET="666" \
 -v data:/data \
 -v lnd-data:/lnd:ro \
 -p 8080:8080 \
 --name nwc \
--it horologger/nostr-wallet-connect:v0.4.2 
+-it horologger/albyhub:v0.4.2
 
 ```
 Inspect
