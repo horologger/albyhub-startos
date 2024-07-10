@@ -4,13 +4,8 @@ version: 0.6.2
 release-notes: Alby Hub initial release
 license: Apache-2.0
 wrapper-repo: "https://github.com/horologger/albyhub-startos"
-<<<<<<< Updated upstream
 upstream-repo: "https://github.com/getAlby/hub"
 support-site: "https://github.com/getAlby/hub/issues"
-=======
-upstream-repo: "https://github.com/getAlby/albyhub-next"
-support-site: "https://github.com/getAlby/albyhub-next/issues"
->>>>>>> Stashed changes
 marketing-site: "https://getalby.com/"
 build: ["make"]
 description:
