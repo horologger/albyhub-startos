@@ -3,9 +3,9 @@ title: Alby Hub
 version: 0.6.2
 release-notes: Alby Hub initial release
 license: Apache-2.0
-wrapper-repo: "https://github.com/horologger/nostr-wallet-connect-startos"
-upstream-repo: "https://github.com/getAlby/nostr-wallet-connect-next"
-support-site: "https://github.com/getAlby/nostr-wallet-connect-next/issues"
+wrapper-repo: "https://github.com/horologger/albyhub-startos"
+upstream-repo: "https://github.com/getAlby/hub"
+support-site: "https://github.com/getAlby/hub/issues"
 marketing-site: "https://getalby.com/"
 build: ["make"]
 description:

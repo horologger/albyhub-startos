@@ -4,6 +4,7 @@
 *.macaroon
 node_modules
 nostr-wallet-connect
+albyhub
 nwc.db
 docker-images/
 *.s9pk
