@@ -24,13 +24,5 @@ export const getConfig: T.ExpectedExports.getConfig = compat.getConfig({
       "package-id": "albyhub",
       "target": "lan-address",
       "interface": "main",
-    },
-    "nostr-relay": {
-        "type": "string",
-        "name": "Nostr Relay",
-        "default": "wss://relay.getalby.com/v1",
-        "description": "The Nostr Relay to use for Albyhub connections",
-        "copyable": true,
-        "nullable": false,
     }
   });
