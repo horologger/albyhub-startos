@@ -1,6 +1,6 @@
 id: albyhub
 title: Alby Hub
-version: 0.6.2
+version: 1.2.0
 release-notes: Alby Hub initial release
 license: Apache-2.0
 wrapper-repo: "https://github.com/horologger/albyhub-startos"
