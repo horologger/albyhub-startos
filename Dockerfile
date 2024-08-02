@@ -1,4 +1,4 @@
-FROM ghcr.io/getalby/hub:v1.4.0
+FROM ghcr.io/getalby/hub:v1.4.1
 LABEL maintainer="andrewlunde <andrew.lunde@sap.com>"
 
 # Start9 Packaging
