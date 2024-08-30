@@ -1,6 +1,6 @@
 id: albyhub
 title: Alby Hub
-version: 1.4.1
+version: 1.6.0
 release-notes: Alby Hub initial release
 license: Apache-2.0
 wrapper-repo: "https://github.com/horologger/albyhub-startos"
@@ -9,12 +9,12 @@ support-site: "https://github.com/getAlby/hub/issues"
 marketing-site: "https://getalby.com/"
 build: ["make"]
 description:
-  short: Alby Hub for Start9
+  short: Self-custodial Lightning wallet with integrated node.
   long: |
-    Connect your Start9 to the world of Bitcoin apps.
+    Alby Hub is the open-source, self-custodial Lightning wallet that puts you in control. With an integrated node, it's more than just a wallet—it's your gateway to Bitcoin. Manage channels, run apps, and take charge of your funds, all through one sleek, user-friendly interface. Empower your Bitcoin journey with simplicity and sovereignty.
 assets:
   license: LICENSE
-  icon: nwc-logo.png
+  icon: icon.png
   instructions: instructions.md
 main:
   type: docker
@@ -29,11 +29,11 @@ health-checks:
     name: Web UI
     success-message: Alby Hub is ready
     type: script
-config:
-  get:
-    type: script
-  set:
-    type: script
+config: ~
+  # get:
+  #   type: script
+  # set:
+  #   type: script
 properties: ~
 environment: ~
 volumes:
@@ -62,7 +62,7 @@ interfaces:
       - http
 dependencies:
   lnd:
-    version: ">=0.16.0 <0.19.0"
+    version: ">=0.16.0 <0.20.0"
     description: Nostr Wallet Connect works with your LND
     requirement:
       type: "required"
@@ -78,10 +78,10 @@ backup:
       - duplicity
       - create
       - /mnt/backup
-      - /root/data
+      - /data/albyhub
     mounts:
       BACKUP: "/mnt/backup"
-      main: "/root/data"
+      main: "/data/albyhub"
   restore:
     type: docker
     image: compat
@@ -91,10 +91,10 @@ backup:
       - duplicity
       - restore
       - /mnt/backup
-      - /root/data
+      - /data/albyhub
     mounts:
       BACKUP: "/mnt/backup"
-      main: "/root/data"
+      main: "/data/albyhub"
 migrations:
   from:
     "*":

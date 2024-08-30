@@ -1,9 +1,10 @@
 <p align="center">
-  <img src="nwc-logo.png" alt="Project Logo" width="21%">
+  <img src="icon.png" alt="Project Logo" width="21%">
 </p>
 
 # Alby Hub for StartOS
 
+[Alby Hub](https://github.com/getAlby/hub) is the open-source, self-custodial Lightning wallet that puts you in control. With an integrated node, it's more than just a wallet—it's your gateway to Bitcoin. Manage channels, run apps, and take charge of your funds, all through one sleek, user-friendly interface. Empower your Bitcoin journey with simplicity and sovereignty.
 This repository creates the `s9pk` package that is installed to run `Alby Hub` on [StartOS](https://github.com/Start9Labs/start-os/).
 
 ## Dependencies
