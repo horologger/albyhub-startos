@@ -2,10 +2,6 @@
 
 import { compat, types as T } from "../deps.ts";
 
-// export const getConfig: T.ExpectedExports.getConfig = compat.getConfig({});
-
-// https://docs.start9.com/0.3.5.x/developer-docs/specification/config-spec#string
-
 export const getConfig: T.ExpectedExports.getConfig = compat.getConfig({
     "tor-address": {
       "name": "Tor Address",

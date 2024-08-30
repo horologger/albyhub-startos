@@ -1,8 +1,14 @@
-FROM ghcr.io/getalby/hub:v1.4.1
-LABEL maintainer="andrewlunde <andrew.lunde@sap.com>"
+FROM ghcr.io/getalby/hub:v1.6.0 AS builder
 
-# Start9 Packaging
-RUN apk add --no-cache yq; \
-    rm -f /var/cache/apk/*
+FROM debian:12-slim AS final
 
+ENV LD_LIBRARY_PATH=/usr/lib/nwc
+
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /usr/lib/nwc/libbreez_sdk_bindings.so /usr/lib/nwc/
+COPY --from=builder /usr/lib/nwc/libglalby_bindings.so /usr/lib/nwc/
+COPY --from=builder /usr/lib/nwc/libldk_node.so /usr/lib/nwc/
+COPY --from=builder /bin/main /bin/
 COPY --chmod=755 docker_entrypoint.sh /usr/local/bin/
+
+LABEL maintainer="andrewlunde <andrew.lunde@sap.com>"

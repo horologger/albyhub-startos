@@ -49,7 +49,7 @@ else
 	docker buildx build --tag start9/$(PKG_ID)/main:$(PKG_VERSION) --platform=linux/amd64 -o type=docker,dest=docker-images/x86_64.tar .
 endif
 
-$(PKG_ID).s9pk: manifest.yaml instructions.md nwc-logo.png LICENSE scripts/embassy.js  docker-images/aarch64.tar docker-images/x86_64.tar
+$(PKG_ID).s9pk: manifest.yaml instructions.md icon.png LICENSE scripts/embassy.js  docker-images/aarch64.tar docker-images/x86_64.tar
 ifeq ($(ARCH),aarch64)
 	@echo "start-sdk: Preparing aarch64 package ..."
 else ifeq ($(ARCH),x86_64)
