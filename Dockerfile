@@ -1,4 +1,4 @@
-FROM ghcr.io/getalby/hub:v1.6.0 AS builder
+FROM ghcr.io/getalby/hub:v1.8.0 AS builder
 
 FROM debian:12-slim AS final
 
