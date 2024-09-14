@@ -89,6 +89,7 @@ if [ "$LN_VALUE" = "lnd" ]; then
     export LND_ADDRESS="lnd.embassy:10009"             # the LND gRPC address
     export LND_CERT_FILE="/mnt/lnd/tls.cert"           # the location where LND's tls.cert file can be found
     export LND_MACAROON_FILE="/mnt/lnd/admin.macaroon" # the location where LND's admin.macaroon file can be found
+    export ENABLE_ADVANCED_SETUP=false
 else
     # Default to Alby/LDK if lightning value is not "lnd"
     export LN_BACKEND_TYPE="LDK"
