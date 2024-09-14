@@ -2,17 +2,21 @@
 
 import { compat, types as T } from "../deps.ts";
 
-// export const setConfig = compat.setConfig;
+// deno-lint-ignore require-await
+export const setConfig: T.ExpectedExports.setConfig = async (
+  effects: T.Effects,
+  newConfig: T.Config
+) => {
+  // deno-lint-ignore no-explicit-any
+  const dependsOnLND: { [key: string]: string[] } =
+    (newConfig as any)?.lightning === "lnd" ? { lnd: [] } : {};
 
-export const setConfig: T.ExpectedExports.setConfig = async (effects, input ) => {
-    // deno-lint-ignore no-explicit-any
-    const newConfig = input as any;
-  
-    const depsLnd: T.DependsOn = newConfig?.implementation === "LndRestWallet"  ? {lnd: []} : {}
-    const depsCln: T.DependsOn = newConfig?.implementation === "CLightningWallet"  ? {"c-lightning": []} : {}
-  
-    return await compat.setConfig(effects,input, {
-      ...depsLnd,
-      ...depsCln,
-    })
-  }
+  // deno-lint-ignore no-explicit-any
+  const dependsOnAlby: { [key: string]: string[] } =
+    (newConfig as any)?.lightning === "alby" ? { alby: [] } : {};
+
+  return compat.setConfig(effects, newConfig, {
+    ...dependsOnLND,
+    ...dependsOnAlby,
+  });
+};
