@@ -16,12 +16,12 @@ export const getConfig: T.ExpectedExports.getConfig = compat.getConfig({
   lightning: {
     name: "Lightning Implementation",
     description:
-      "Choose the Lightning implementation to use with Alby Hub.<br><br><strong>LND on this node</strong>: Use the LND (Lightning Network Daemon) implementation. This is the more sovereign and secure option, allowing full control over your node.<br><br><strong>Alby embedded node (LDK)</strong>: Use the built-in Lightning Development Kit (LDK) implementation. This option is convenient but offers less control over your node.",
+      "Choose the Lightning implementation to use with Alby Hub.<br><br><strong>LND on this server</strong>: This option tells Alby Hub to use the LND node installed on this StartOS server. It is the more sovereign and secure option, allowing full control over your node.<br><br><strong>Alby embedded light node</strong>: This option tells Alby Hub to use its own, built-in light node. This option is convenient but offers less control over your node.",
     type: "enum",
     values: ["lnd", "alby"],
     "value-names": {
-      lnd: "LND on this node",
-      alby: "Alby embedded node (LDK)",
+      lnd: "LND on this server",
+      alby: "Alby Hub embedded light node",
     },
     default: "lnd",
     // "warning": "The Alby embedded node (LDK) is a convenient starting option, but for increased sovereignty and security, it's recommended to switch to LND when possible."

@@ -3,8 +3,8 @@
 1. **Configure Alby Hub**
    In the Alby Hub configuration settings, select your preferred Lightning implementation:
 
-   - **LND on this node**: This is the default and preferred method, offering full control over your node. Use the LND (Lightning Network Daemon) implementation for increased sovereignty and security.
-   - **Alby embedded node (LDK)**: Use the built-in Alby's Lightning Development Kit (LDK) implementation for convenience. This option doesn't require running your own LND node and might be a good choice for low-powered devices.
+   - **LND on this server**: This option tells Alby Hub to use the LND node installed on this StartOS server. It is the more sovereign and secure option, allowing full control over your node.
+   - **Alby Hub embedded light node**: This option tells Alby Hub to use its own, built-in light node. This option is convenient but offers less control over your node.
 
 2. **Start the Service**
    After configuring, start the Alby Hub service.
@@ -16,7 +16,7 @@
    On the Alby Welcome screen, click the **Get Started** button. The button will display either (LND) or (LDK) based on your chosen configuration.
 
 5. **Create a Strong Password**  
-   Set a strong password for your Alby Hub account. It's recommended to store this password securely in your self-hosted Vaultwarden.
+   Set a strong password for your Alby Hub account. It's recommended to store this password securely in your self-hosted Vaultwarden. If you are using the Alby Hub embedded light node, it is critical you do not lose your password, as it will result in loss of funds.
 
 6. **Connect Your Alby Account**  
    Follow the on-screen instructions to connect your Alby account.
