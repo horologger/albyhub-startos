@@ -23,6 +23,7 @@ main:
   args: []
   mounts:
     main: /data
+    cert: /mnt/cert
     lnd: /mnt/lnd
 health-checks:
   web-ui:
@@ -39,6 +40,9 @@ environment: ~
 volumes:
   main:
     type: data
+  cert:
+    type: certificate
+    interface-id: main
   lnd:
     type: pointer
     package-id: lnd
@@ -52,6 +56,7 @@ interfaces:
     tor-config:
       port-mapping:
         80: "8080"
+        443: "8443"
     lan-config:
       443:
         ssl: true

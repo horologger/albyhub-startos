@@ -102,6 +102,21 @@ export WORK_DIR="/data/albyhub"
 export PORT=8080       #the port on which the app should listen on (default='blah' #8080)
 export LOG_EVENTS=true # makes debugging easier
 
+# Reverse proxy configuration (aka Firefox patch)
+cat  <<EOF >/etc/caddy/Caddyfile
+{
+    admin off
+    servers {
+        protocols h1 h2c h3
+    }
+}
+
+:8443 {
+    tls /mnt/cert/main.cert.pem /mnt/cert/main.key.pem
+    reverse_proxy albyhub.embassy:8080
+}
+EOF
+
 # Output some debug information
 echo "LN Backend Type: $LN_BACKEND_TYPE"
 if [ "$LN_VALUE" = "lnd" ]; then
@@ -110,5 +125,19 @@ if [ "$LN_VALUE" = "lnd" ]; then
     echo "LND Macaroon: $LND_MACAROON_FILE"
 fi
 
-# Start the Alby Hub app
-exec /bin/main
+# Set up a trap to catch INT signal for graceful shutdown and start
+_term() {
+  echo "Caught INT signal!"
+  kill -INT "$alby_process" 2>/dev/null
+  kill -INT "$caddy_process" 2>/dev/null
+}
+
+main &
+alby_process=$!
+
+caddy run --config /etc/caddy/Caddyfile &
+caddy_process=$!
+
+trap _term INT
+
+wait $caddy_process $alby_process
