@@ -3,7 +3,7 @@ title: Alby Hub
 version: 1.8.0
 release-notes: Alby Hub initial release
 license: Apache-2.0
-wrapper-repo: "https://github.com/horologger/albyhub-startos"
+wrapper-repo: "https://github.com/start9labs/albyhub-startos"
 upstream-repo: "https://github.com/getAlby/hub"
 support-site: "https://github.com/getAlby/hub/issues"
 marketing-site: "https://albyhub.com/"
