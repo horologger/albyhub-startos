@@ -3,22 +3,27 @@
 import { compat, types as T } from "../deps.ts";
 
 export const getConfig: T.ExpectedExports.getConfig = compat.getConfig({
-    "tor-address": {
-      "name": "Tor Address",
-      "description": "The Tor address of the network interface",
-      "type": "pointer",
-      "subtype": "package",
-      "package-id": "albyhub",
-      "target": "tor-address",
-      "interface": "main",
+  "tor-address": {
+    name: "Tor Address",
+    description: "The Tor address of the network interface",
+    type: "pointer",
+    subtype: "package",
+    "package-id": "albyhub",
+    target: "tor-address",
+    interface: "main",
+  },
+
+  lightning: {
+    name: "Lightning Implementation",
+    description:
+      "Choose the Lightning implementation to use with Alby Hub.<br><br><strong>LND on this server</strong>: This option tells Alby Hub to use the LND node installed on this StartOS server. It is the more sovereign and secure option, allowing full control over your node.<br><br><strong>Alby embedded light node</strong>: This option tells Alby Hub to use its own, built-in light node. This option is convenient but offers less control over your node.",
+    type: "enum",
+    values: ["lnd", "alby"],
+    "value-names": {
+      lnd: "LND on this server",
+      alby: "Alby Hub embedded light node",
     },
-    "lan-address": {
-      "name": "LAN Address",
-      "description": "The LAN address of the network interface",
-      "type": "pointer",
-      "subtype": "package",
-      "package-id": "albyhub",
-      "target": "lan-address",
-      "interface": "main",
-    }
-  });
+    default: "lnd",
+    // "warning": "The Alby embedded node (LDK) is a convenient starting option, but for increased sovereignty and security, it's recommended to switch to LND when possible."
+  },
+});

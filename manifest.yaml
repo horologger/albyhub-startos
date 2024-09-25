@@ -1,12 +1,12 @@
 id: albyhub
 title: Alby Hub
-version: 1.8.0
+version: 1.10.1
 release-notes: Alby Hub initial release
 license: Apache-2.0
-wrapper-repo: "https://github.com/horologger/albyhub-startos"
+wrapper-repo: "https://github.com/start9labs/albyhub-startos"
 upstream-repo: "https://github.com/getAlby/hub"
 support-site: "https://github.com/getAlby/hub/issues"
-marketing-site: "https://getalby.com/"
+marketing-site: "https://albyhub.com/"
 build: ["make"]
 description:
   short: Self-custodial Lightning wallet with integrated node.
@@ -23,22 +23,26 @@ main:
   args: []
   mounts:
     main: /data
+    cert: /mnt/cert
     lnd: /mnt/lnd
 health-checks:
   web-ui:
     name: Web UI
     success-message: Alby Hub is ready
     type: script
-config: ~
-  # get:
-  #   type: script
-  # set:
-  #   type: script
+config:
+  get:
+    type: script
+  set:
+    type: script
 properties: ~
 environment: ~
 volumes:
   main:
     type: data
+  cert:
+    type: certificate
+    interface-id: main
   lnd:
     type: pointer
     package-id: lnd
@@ -52,6 +56,7 @@ interfaces:
     tor-config:
       port-mapping:
         80: "8080"
+        443: "8443"
     lan-config:
       443:
         ssl: true
@@ -63,10 +68,10 @@ interfaces:
 dependencies:
   lnd:
     version: ">=0.16.0 <0.20.0"
-    description: Nostr Wallet Connect works with your LND
+    description: Alby Hub works with your LND
     requirement:
-      type: "required"
-      how: Use the LND instance by default
+      type: "opt-in"
+      how: "Can alternatively use Alby's LDK node"
     config: ~
 backup:
   create:
