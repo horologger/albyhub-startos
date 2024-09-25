@@ -1,4 +1,4 @@
-FROM ghcr.io/getalby/hub:v1.9.0 AS builder
+FROM ghcr.io/getalby/hub:v1.10.1 AS builder
 RUN apt update; apt install -y --no-install-recommends caddy
 
 FROM debian:12-slim AS final
